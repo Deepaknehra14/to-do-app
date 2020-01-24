@@ -1,0 +1,25 @@
+<div class="div1">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Enter Title..." [(ngModel)]="title">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Enter Content..." [(ngModel)]="content">
+  </mat-form-field>
+</div>
+
+<br>
+
+<div class="example-button-row">
+  <button mat-raised-button color="primary" (click)="AddToList(title.value,content.value)">Add to List</button>
+</div>
+<br><br>
+<mat-accordion multi="true" *ngIf="todos.length > 0">
+    <mat-expansion-panel *ngFor="let l of todos,index as i">
+      <mat-expansion-panel-header>
+          <mat-panel-title>{{l.label}} </mat-panel-title>
+           <button mat-fab color="primary" (click)="todos.splice(i,1)" class="button1">Delete</button>
+    </mat-expansion-panel-header>
+    <p>{{l.msg}}</p>  
+  </mat-expansion-panel>
+</mat-accordion>
